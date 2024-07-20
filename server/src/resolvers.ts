@@ -10,6 +10,13 @@ import {
   updateJob,
 } from "./db/jobs.js";
 import { Resolvers } from "./generated/graphql.js";
+import { CompanyEntity, UserEntity } from "./db/types.js";
+import DataLoader from "dataloader";
+
+export interface ResolverContext {
+  user?: UserEntity;
+  companyLoader: DataLoader<string, CompanyEntity, string>;
+}
 
 export const resolvers: Resolvers = {
   Query: {
